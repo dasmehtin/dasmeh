@@ -1,4 +1,4 @@
-name: bilde
+name: Bilde
 env:
   TRYIT: ${{ github.event.inputs.try_override }}
   BIST: ${{ github.event.inputs.bist_override }}
