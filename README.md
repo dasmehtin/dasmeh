@@ -128,36 +128,3 @@ In order to build the Docker images, simply run the following command:
 ```bash
  $ make docker-build
 ```
-
-You can find the quiche Docker images on the following Docker Hub repositories:
-
-- [cloudflare/quiche](https://hub.docker.com/repository/docker/cloudflare/quiche)
-- [cloudflare/quiche-qns](https://hub.docker.com/repository/docker/cloudflare/quiche-qns)
-
-The `latest` tag will be updated whenever quiche master branch updates.
-
-**cloudflare/quiche**
-
-Provides a server and client installed in /usr/local/bin.
-
-**cloudflare/quiche-qns**
-
-Provides the script to test quiche within the [quic-interop-runner](https://github.com/marten-seemann/quic-interop-runner).
-
-Disclaimers and Notes
----------
-
-⚠️ This repository includes a number of client and server example
-applications that are provided to demonstrate simple usage of the quiche library
-API. They are not intended to be used in production environments; no
-performance, security or reliability guarantees are provided.
-
-
-Copyright
----------
-
-Copyright (C) 2018-2019, Cloudflare, Inc.
-
-See [COPYING] for the license.
-
-[COPYING]: https://github.com/cloudflare/quiche/tree/master/COPYING
